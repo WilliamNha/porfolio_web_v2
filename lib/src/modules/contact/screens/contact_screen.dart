@@ -91,6 +91,7 @@ class _ContactScreenState extends State<ContactScreen>
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       key: _key,
       drawer: CustomAnimatedDrawer(
           isContactHover: true,

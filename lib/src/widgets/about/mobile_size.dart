@@ -106,6 +106,7 @@ class _MobileSizeState extends State<MobileSize> {
                             fontFamily: 'OpenSans'),
                       ),
                       ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           return Column(
@@ -126,6 +127,7 @@ class _MobileSizeState extends State<MobileSize> {
                                 height: 20,
                               ),
                               ListView.builder(
+                                  physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
                                   itemCount: listSkillModel[index]
                                       .skillModelList!
@@ -244,7 +246,7 @@ class _MobileSizeState extends State<MobileSize> {
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: SizedBox(
-                                width: 90,
+                                width: 96,
                                 child: Stack(
                                   children: [
                                     _aboutMeController
@@ -256,7 +258,7 @@ class _MobileSizeState extends State<MobileSize> {
                                             width: _aboutMeController
                                                     .isLeftSizeQuoteBoxAnimated
                                                     .value
-                                                ? 90
+                                                ? 96
                                                 : 0,
                                             height: 50,
                                             duration: const Duration(
@@ -275,7 +277,7 @@ class _MobileSizeState extends State<MobileSize> {
                                                 .isRightSizeQuoteBoxAnimated
                                                 .value
                                             ? 0
-                                            : 90,
+                                            : 96,
                                         height: 50,
                                         duration:
                                             const Duration(milliseconds: 500),

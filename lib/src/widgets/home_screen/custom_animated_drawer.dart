@@ -95,7 +95,7 @@ class _CustomAnimatedDrawerState extends State<CustomAnimatedDrawer> {
                   ],
                 ),
                 const SizedBox(
-                  height: 120,
+                  height: 150,
                 ),
                 DrawerButtonPart(
                   isFocusHovered: widget.isHomeHover,
@@ -189,12 +189,12 @@ class _CustomAnimatedDrawerState extends State<CustomAnimatedDrawer> {
                   height: 5,
                 ),
                 DrawerButtonPart(
-                  positionFromLeft: 13,
+                  positionFromLeft: 0,
                   isFocusHovered: widget.isContactHover,
                   fontSize: fontSize,
                   backgroundNumber: '03',
                   foregroundTitle: 'Contact',
-                  widthSize: 155,
+                  widthSize: 140,
                   onTab: () {
                     if (widget.animationController!.status ==
                             AnimationStatus.forward ||
@@ -263,9 +263,11 @@ class _DrawerButtonPartState extends State<DrawerButtonPart> {
         });
       },
       child: SizedBox(
+        // color: Colors.red,
         width: widget.widthSize,
         height: 80,
         child: Stack(
+          alignment: Alignment.center,
           children: [
             Align(
               alignment: Alignment.center,
@@ -280,26 +282,32 @@ class _DrawerButtonPartState extends State<DrawerButtonPart> {
                     fontWeight: FontWeight.bold),
               ),
             ),
-            Positioned(
-              top: 25,
-              left: widget.positionFromLeft,
+            Center(
               child: isHover || widget.isFocusHovered
-                  ? Shimmer.fromColors(
-                      baseColor: Colors.white,
-                      highlightColor: Colors.grey.withOpacity(0.9),
-                      child: Text(
-                        widget.foregroundTitle,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: widget.fontSize),
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.white,
+                        highlightColor: Colors.grey.withOpacity(0.9),
+                        child: Text(
+                          widget.foregroundTitle,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: widget.fontSize),
+                        ),
                       ),
                     )
-                  : Text(
-                      widget.foregroundTitle,
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(0.4),
-                          fontWeight: FontWeight.bold,
-                          fontSize: widget.fontSize),
+                  : Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Text(
+                          widget.foregroundTitle,
+                          style: TextStyle(
+                              color: Colors.white.withOpacity(0.4),
+                              fontWeight: FontWeight.bold,
+                              fontSize: widget.fontSize),
+                        ),
+                      ),
                     ),
             ),
           ],
