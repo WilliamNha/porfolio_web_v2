@@ -189,11 +189,12 @@ class _CustomAnimatedDrawerState extends State<CustomAnimatedDrawer> {
                   height: 5,
                 ),
                 DrawerButtonPart(
+                  positionFromLeft: 13,
                   isFocusHovered: widget.isContactHover,
                   fontSize: fontSize,
                   backgroundNumber: '03',
                   foregroundTitle: 'Contact',
-                  widthSize: 130,
+                  widthSize: 155,
                   onTab: () {
                     if (widget.animationController!.status ==
                             AnimationStatus.forward ||
@@ -233,6 +234,7 @@ class DrawerButtonPart extends StatefulWidget {
     this.widthSize = 100,
     required this.foregroundTitle,
     required this.onTab,
+    this.positionFromLeft = 0,
   }) : super(key: key);
 
   final bool isFocusHovered;
@@ -241,6 +243,7 @@ class DrawerButtonPart extends StatefulWidget {
   double widthSize;
   final String foregroundTitle;
   final GestureTapCallback onTab;
+  final double positionFromLeft;
 
   @override
   State<DrawerButtonPart> createState() => _DrawerButtonPartState();
@@ -279,6 +282,7 @@ class _DrawerButtonPartState extends State<DrawerButtonPart> {
             ),
             Positioned(
               top: 25,
+              left: widget.positionFromLeft,
               child: isHover || widget.isFocusHovered
                   ? Shimmer.fromColors(
                       baseColor: Colors.white,
