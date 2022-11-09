@@ -17,16 +17,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     showOverlay(context);
-    // Timer(const Duration(milliseconds: 5400), () {
-    // Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => const HomeScreen(
-    //       isFromSplash: 'true',
-    //     ),
-    //   ),
-    // );
-    // });
     super.initState();
   }
 
