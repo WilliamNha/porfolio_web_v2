@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_project_v2/src/constants/app_setting_color.dart';
+import 'package:portfolio_project_v2/src/widgets/contact/custom_animated_send_button.dart';
 import 'package:portfolio_project_v2/src/widgets/home_screen/animated_my_image.dart';
 import 'package:portfolio_project_v2/src/widgets/home_screen/check_my_work_button.dart';
+import 'package:portfolio_project_v2/src/widgets/home_screen/crafted_with_love_part.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class TabletAndDesktopPicturePart extends StatefulWidget {
+  final ScrollController scrollController;
   const TabletAndDesktopPicturePart({
+    required this.scrollController,
     Key? key,
   }) : super(key: key);
 
@@ -17,140 +22,263 @@ bool isHovered = false;
 
 class _TabletAndDesktopPicturePartState
     extends State<TabletAndDesktopPicturePart> {
+  final shoeEzKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveVisibility(
         visible: false,
         visibleWhen: const [Condition.largerThan(name: MOBILE)],
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: SizedBox(
-                  height: 500,
-                  width: double.infinity,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        // color: Colors.red,
-                        padding: EdgeInsets.only(
-                          left: ResponsiveValue(
-                            context,
-                            defaultValue: 10.0,
-                            valueWhen: const [
-                              Condition.smallerThan(
-                                name: DESKTOP,
-                                value: 20.0,
-                              ),
-                            ],
-                          ).value!,
-                          top: ResponsiveValue(
-                            context,
-                            defaultValue: 0.0,
-                            valueWhen: const [
-                              Condition.smallerThan(
-                                name: DESKTOP,
-                                value: 50.0,
-                              ),
-                            ],
-                          ).value!,
-                        ),
-                        width: 450,
-                        // padding: EdgeInsets,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(
-                              height: 60,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(
+                      height: 500,
+                      width: double.infinity,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            // color: Colors.red,
+                            padding: EdgeInsets.only(
+                              left: ResponsiveValue(
+                                context,
+                                defaultValue: 10.0,
+                                valueWhen: const [
+                                  Condition.smallerThan(
+                                    name: DESKTOP,
+                                    value: 20.0,
+                                  ),
+                                ],
+                              ).value!,
+                              top: ResponsiveValue(
+                                context,
+                                defaultValue: 0.0,
+                                valueWhen: const [
+                                  Condition.smallerThan(
+                                    name: DESKTOP,
+                                    value: 50.0,
+                                  ),
+                                ],
+                              ).value!,
                             ),
-                            Text(
-                              'Hi, My name is',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Roboto',
-                                fontSize: ResponsiveValue(
-                                  context,
-                                  defaultValue: 25.0,
-                                  valueWhen: const [
-                                    Condition.smallerThan(
-                                      name: DESKTOP,
-                                      value: 20.0,
-                                    ),
-                                  ],
-                                ).value,
-                              ),
+                            width: 450,
+                            // padding: EdgeInsets,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(
+                                  height: 60,
+                                ),
+                                Text(
+                                  'Hi, My name is',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Roboto',
+                                    fontSize: ResponsiveValue(
+                                      context,
+                                      defaultValue: 25.0,
+                                      valueWhen: const [
+                                        Condition.smallerThan(
+                                          name: DESKTOP,
+                                          value: 20.0,
+                                        ),
+                                      ],
+                                    ).value,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'PANHA HENG',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Roboto',
+                                    fontSize: ResponsiveValue(
+                                      context,
+                                      defaultValue: 50.0,
+                                      valueWhen: const [
+                                        Condition.smallerThan(
+                                          name: DESKTOP,
+                                          value: 40.0,
+                                        ),
+                                      ],
+                                    ).value,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  'A cross-platform mobile developer who has strong passion for coding and Web3 technology.',
+                                  style: TextStyle(
+                                      color: Colors.black54,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'Roboto',
+                                      fontSize: 18),
+                                ),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                CheckMyWorkButton(
+                                  onTap: () {
+                                    widget.scrollController.position
+                                        .ensureVisible(
+                                      shoeEzKey.currentContext!
+                                          .findRenderObject()!,
+                                      alignment:
+                                          0.1, // How far into view the item should be scrolled (between 0 and 1).
+                                      duration: const Duration(seconds: 1),
+                                    );
+                                  },
+                                ),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                              ],
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'PANHA HENG',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Roboto',
-                                fontSize: ResponsiveValue(
-                                  context,
-                                  defaultValue: 50.0,
-                                  valueWhen: const [
-                                    Condition.smallerThan(
-                                      name: DESKTOP,
-                                      value: 40.0,
-                                    ),
-                                  ],
-                                ).value,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            const Text(
-                              'A cross-platform mobile developer who has strong passion for coding and Web3 technology.',
-                              style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.normal,
-                                  fontFamily: 'Roboto',
-                                  fontSize: 18),
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            CheckMyWorkButton(
-                              onTap: () {},
-                            ),
-                            const SizedBox(
-                              height: 30,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        right: ResponsiveValue(
+                          context,
+                          defaultValue: 0.0,
+                          valueWhen: const [
+                            Condition.smallerThan(
+                              name: DESKTOP,
+                              value: 0.0,
                             ),
                           ],
+                        ).value!,
+                      ),
+                      child: const AnimatedMyImage(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // ============= crafted with love part
+            const CraftedWIthLovePart(),
+            // ============== project part
+            Container(
+              key: shoeEzKey,
+              color: AppColor.primaryBackgroundColor,
+              width: double.infinity,
+              height: 350,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width / 10),
+                        child: const Text(
+                          'Shop Easy',
+                          style: TextStyle(
+                              fontSize: 40,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width / 10,
+                          right: MediaQuery.of(context).size.width / 20,
+                        ),
+                        child: Text(
+                          'A mobile app with beautiful UI that look like a real and professional ecommerce app.',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal,
+                            fontFamily: 'Roboto',
+                            fontSize: ResponsiveValue(
+                              context,
+                              defaultValue: 18.0,
+                              valueWhen: [
+                                const Condition.smallerThan(
+                                  name: DESKTOP,
+                                  value: 16.0,
+                                ),
+                              ],
+                            ).value,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width / 10),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: CustomAnimatedSendButton(
+                            isHasArrowIcon: true,
+                            buttonText: 'Check',
+                            alignmentGeometry: Alignment.centerLeft,
+                            onTab: () {},
+                            screenWidth: MediaQuery.of(context).size.width,
+                          ),
                         ),
                       ),
                     ],
+                  )),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 30, top: 30),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 30),
+                                child: Image.asset(
+                                  'assets/images/work/shop_easy/get_in.png',
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                  padding: const EdgeInsets.only(right: 30),
+                                  child: Image.asset(
+                                    'assets/images/work/shop_easy/home.png',
+                                  )),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                  padding: const EdgeInsets.only(right: 30),
+                                  child: Image.asset(
+                                    'assets/images/work/shop_easy/shoes.png',
+                                  )),
+                            ),
+                          ]),
+                    ),
                   ),
-                ),
+                ],
               ),
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    right: ResponsiveValue(
-                      context,
-                      defaultValue: 0.0,
-                      valueWhen: const [
-                        Condition.smallerThan(
-                          name: DESKTOP,
-                          value: 0.0,
-                        ),
-                      ],
-                    ).value!,
-                  ),
-                  child: const AnimatedMyImage(),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ));
   }
 }

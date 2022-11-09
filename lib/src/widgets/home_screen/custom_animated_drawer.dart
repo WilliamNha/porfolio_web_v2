@@ -154,37 +154,6 @@ class _CustomAnimatedDrawerState extends State<CustomAnimatedDrawer> {
                     }
                   },
                 ),
-                // const SizedBox(
-                //   height: 5,
-                // ),
-                // DrawerButtonPart(
-                //   isFocusHovered: widget.isCertificateHover,
-                //   fontSize: fontSize,
-                //   backgroundNumber: '03',
-                //   foregroundTitle: 'Certificate',
-                //   widthSize: 165,
-                //   onTab: () {
-                //     if (widget.animationController!.status ==
-                //             AnimationStatus.forward ||
-                //         widget.animationController!.status ==
-                //             AnimationStatus.completed) {
-                //       widget.animationController!.reverse();
-                //     } else {
-                //       widget.animationController!.forward();
-                //     }
-                //     if (widget.isCertificateHover) {
-                //       Future.delayed(const Duration(milliseconds: 600), () {
-                //         Navigator.pop(context);
-                //       });
-                //     } else {
-                //       Future.delayed(const Duration(milliseconds: 600), () {
-                //         context.go(
-                //           '/certifications',
-                //         );
-                //       });
-                //     }
-                //   },
-                // ),
                 const SizedBox(
                   height: 5,
                 ),
@@ -194,7 +163,7 @@ class _CustomAnimatedDrawerState extends State<CustomAnimatedDrawer> {
                   fontSize: fontSize,
                   backgroundNumber: '03',
                   foregroundTitle: 'Contact',
-                  widthSize: 140,
+                  widthSize: 160,
                   onTab: () {
                     if (widget.animationController!.status ==
                             AnimationStatus.forward ||
@@ -282,9 +251,9 @@ class _DrawerButtonPartState extends State<DrawerButtonPart> {
                     fontWeight: FontWeight.bold),
               ),
             ),
-            Center(
-              child: isHover || widget.isFocusHovered
-                  ? Padding(
+            isHover || widget.isFocusHovered
+                ? Center(
+                    child: Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: Shimmer.fromColors(
                         baseColor: Colors.white,
@@ -296,20 +265,20 @@ class _DrawerButtonPartState extends State<DrawerButtonPart> {
                               fontSize: widget.fontSize),
                         ),
                       ),
-                    )
-                  : Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Text(
-                          widget.foregroundTitle,
-                          style: TextStyle(
-                              color: Colors.white.withOpacity(0.4),
-                              fontWeight: FontWeight.bold,
-                              fontSize: widget.fontSize),
-                        ),
+                    ),
+                  )
+                : Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Text(
+                        widget.foregroundTitle,
+                        style: TextStyle(
+                            color: Colors.white.withOpacity(0.4),
+                            fontWeight: FontWeight.bold,
+                            fontSize: widget.fontSize),
                       ),
                     ),
-            ),
+                  ),
           ],
         ),
       ),

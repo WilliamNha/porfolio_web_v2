@@ -59,7 +59,22 @@ dependencies:
   email_validator: ^2.1.17
   http: ^0.13.5
   web_smooth_scroll: ^1.0.0
+  flutter_launcher_icons: ^0.10.0
 
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/web_logo.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/icon/web_logo.png"
+    background_color: "#FFFFFF"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/icon/web_logo.png"
+    icon_size: 48
 
 dev_dependencies:
   flutter_test:
@@ -89,6 +104,7 @@ flutter:
     - assets/logo/
     - assets/svg/
     - assets/svg/skills/
+    - assets/images/work/shop_easy/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

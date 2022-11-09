@@ -4,7 +4,9 @@ import 'package:portfolio_project_v2/src/widgets/home_screen/tablet_and_destop_p
 import 'package:responsive_framework/responsive_framework.dart';
 
 class IntroductionPart extends StatelessWidget {
+  final ScrollController scrollController;
   const IntroductionPart({
+    required this.scrollController,
     Key? key,
   }) : super(key: key);
 
@@ -87,9 +89,13 @@ class IntroductionPart extends StatelessWidget {
                 ).value,
               ),
               //For Table and desktop view
-              const TabletAndDesktopPicturePart(),
+              TabletAndDesktopPicturePart(
+                scrollController: scrollController,
+              ),
               //For Mobile view
-              const MobilePicturePart(),
+              MobilePicturePart(
+                scrollController: scrollController,
+              ),
             ],
           ),
         ],

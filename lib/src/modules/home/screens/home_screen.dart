@@ -15,12 +15,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
+  final ScrollController _scrollController = ScrollController();
+  double _scrollPosition = 0;
+
+  _scrollListener() {
+    setState(() {
+      _scrollPosition = _scrollController.position.pixels;
+    });
+  }
+
   bool showAppBar = false;
   int defaultSizeBox20 = 20;
   AnimationController? animationController;
   Animation<double>? animation;
   @override
   void initState() {
+    _scrollController.addListener(_scrollListener);
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
@@ -86,14 +96,13 @@ class _HomeScreenState extends State<HomeScreen>
         width: double.infinity,
         height: double.infinity,
         child: SingleChildScrollView(
+          controller: _scrollController,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const IntroductionPart(),
-              Container(
-                height: 500,
-                width: double.infinity,
-                color: Colors.white,
+              IntroductionPart(
+                scrollController: _scrollController,
               ),
               const FooterSection(),
             ],
