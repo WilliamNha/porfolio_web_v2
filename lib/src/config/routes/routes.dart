@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:portfolio_project_v2/src/modules/about/screens/about_screen.dart';
 import 'package:portfolio_project_v2/src/modules/contact/screens/contact_screen.dart';
 import 'package:portfolio_project_v2/src/modules/home/screens/home_screen.dart';
+import 'package:portfolio_project_v2/src/modules/home/screens/project_detail_screen.dart';
 import 'package:portfolio_project_v2/src/modules/splash/screens/splash_screen.dart';
 
 final GoRouter router = GoRouter(
@@ -29,16 +30,6 @@ final GoRouter router = GoRouter(
         child: const AboutScreen(),
       ),
     ),
-    // GoRoute(
-    //   name: 'Cetifications',
-    //   path: '/certifications',
-    //   pageBuilder: (BuildContext context, GoRouterState state) =>
-    //       buildPageWithDefaultTransition(
-    //     context: context,
-    //     state: state,
-    //     child: const CertificationScreen(),
-    //   ),
-    // ),
     GoRoute(
       name: 'Contact',
       path: '/contact',
@@ -47,6 +38,16 @@ final GoRouter router = GoRouter(
         context: context,
         state: state,
         child: const ContactScreen(),
+      ),
+    ),
+    GoRoute(
+      name: 'ProjectDetail',
+      path: '/project_detail',
+      pageBuilder: (BuildContext context, GoRouterState state) =>
+          buildPageWithDefaultTransition(
+        context: context,
+        state: state,
+        child: const ProjectDetailScreen(),
       ),
     ),
   ],

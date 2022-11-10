@@ -117,7 +117,7 @@ class _CustomAnimatedDrawerState extends State<CustomAnimatedDrawer> {
                       });
                     } else {
                       Future.delayed(const Duration(milliseconds: 600), () {
-                        context.go(
+                        context.push(
                           '/home',
                         );
                       });
@@ -147,7 +147,7 @@ class _CustomAnimatedDrawerState extends State<CustomAnimatedDrawer> {
                       });
                     } else {
                       Future.delayed(const Duration(milliseconds: 600), () {
-                        context.go(
+                        context.push(
                           '/about',
                         );
                       });
@@ -179,7 +179,7 @@ class _CustomAnimatedDrawerState extends State<CustomAnimatedDrawer> {
                       });
                     } else {
                       Future.delayed(const Duration(milliseconds: 600), () {
-                        context.go(
+                        context.push(
                           '/contact',
                         );
                       });

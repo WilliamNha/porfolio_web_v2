@@ -60,7 +60,7 @@ class CraftedWIthLovePart extends StatelessWidget {
                         valueWhen: [
                           Condition.smallerThan(
                             name: DESKTOP,
-                            value: isOnMobile ? 14.0 : 16.0,
+                            value: isOnMobile ? 15.0 : 16.0,
                           ),
                         ],
                       ).value,

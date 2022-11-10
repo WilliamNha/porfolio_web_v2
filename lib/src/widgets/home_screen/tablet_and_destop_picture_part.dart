@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio_project_v2/src/constants/app_setting_color.dart';
 import 'package:portfolio_project_v2/src/widgets/contact/custom_animated_send_button.dart';
 import 'package:portfolio_project_v2/src/widgets/home_screen/animated_my_image.dart';
@@ -191,7 +192,7 @@ class _TabletAndDesktopPicturePartState
                         padding: EdgeInsets.only(
                             left: MediaQuery.of(context).size.width / 10),
                         child: const Text(
-                          'Shop Easy',
+                          'Shop Ez',
                           style: TextStyle(
                               fontSize: 40,
                               color: Colors.black,
@@ -207,8 +208,9 @@ class _TabletAndDesktopPicturePartState
                           right: MediaQuery.of(context).size.width / 20,
                         ),
                         child: Text(
-                          'A mobile app with beautiful UI that look like a real and professional ecommerce app.',
+                          'A mobile app with beautiful UI that look like a professional ecommerce app.',
                           style: TextStyle(
+                            height: 1.5,
                             color: Colors.black,
                             fontWeight: FontWeight.normal,
                             fontFamily: 'Roboto',
@@ -237,7 +239,9 @@ class _TabletAndDesktopPicturePartState
                             isHasArrowIcon: true,
                             buttonText: 'Check',
                             alignmentGeometry: Alignment.centerLeft,
-                            onTab: () {},
+                            onTab: () {
+                              context.push('/project_detail');
+                            },
                             screenWidth: MediaQuery.of(context).size.width,
                           ),
                         ),

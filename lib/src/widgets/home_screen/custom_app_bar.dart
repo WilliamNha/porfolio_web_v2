@@ -98,7 +98,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 children: [
                   InkWell(
                     onTap: () {
-                      context.go(
+                      context.push(
                         '/home',
                       );
                     },
@@ -125,7 +125,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   ),
                   InkWell(
                     onTap: () {
-                      context.go('/about');
+                      context.push('/about');
                     },
                     onHover: (value) {
                       setState(() {
@@ -146,39 +146,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
                           ),
                   ),
 
-                  // const SizedBox(
-                  //   width: 20,
-                  // ),
-                  // InkWell(
-                  //   onTap: () {
-                  //     context.go(
-                  //       '/certifications',
-                  //     );
-                  //   },
-                  //   onHover: (value) {
-                  //     setState(() {
-                  //       widget.itemHovered[2] = value;
-                  //     });
-                  //   },
-                  //   child: widget.itemHovered[2] || widget.isSelected == 2
-                  //       ? const CustomShimerText(
-                  //           title: 'Certifications',
-                  //         )
-                  //       : const Text(
-                  //           'Certifications',
-                  //           style: TextStyle(
-                  //             fontSize: 15,
-                  //             color: Colors.black,
-                  //             fontWeight: FontWeight.normal,
-                  //           ),
-                  //         ),
-                  // ),
                   const SizedBox(
                     width: 20,
                   ),
                   InkWell(
                     onTap: () {
-                      context.go('/contact');
+                      context.push('/contact');
                     },
                     onHover: (value) {
                       setState(() {
