@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Animation<double>? animation;
   @override
   void initState() {
-    // showOverlay(context);
+    showOverlay(context);
     super.initState();
   }
 

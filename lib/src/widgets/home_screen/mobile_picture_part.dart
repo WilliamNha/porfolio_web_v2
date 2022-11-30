@@ -22,6 +22,7 @@ bool isHovered = false;
 
 class _MobilePicturePartState extends State<MobilePicturePart> {
   final shoeEzKey = GlobalKey();
+  final cryptovestKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -97,96 +98,123 @@ class _MobilePicturePartState extends State<MobilePicturePart> {
           const CraftedWIthLovePart(
             isOnMobile: true,
           ),
-          Container(
-            key: shoeEzKey,
-            color: AppColor.primaryBackgroundColor,
-            width: double.infinity,
-            height: 350,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Expanded(
-                    child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width / 10),
-                      child: const Text(
-                        'Shop Ez',
-                        style: TextStyle(
-                            fontSize: 28,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width / 10,
-                        right: MediaQuery.of(context).size.width / 20,
-                      ),
-                      child: const Text(
-                        'A mobile app with beautiful UI that look like a professional ecommerce app.',
-                        style: TextStyle(
-                            height: 1.5,
-                            color: Colors.black,
-                            fontWeight: FontWeight.normal,
-                            fontFamily: 'Roboto',
-                            fontSize: 15),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width / 10),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: CustomAnimatedSendButton(
-                          buttonHeight: 35,
-                          buttonWidth: 100,
-                          isHasArrowIcon: true,
-                          buttonText: 'Check',
-                          alignmentGeometry: Alignment.centerLeft,
-                          onTab: () {
-                            context.push('/project_detail');
-                          },
-                          screenWidth: MediaQuery.of(context).size.width,
-                        ),
-                      ),
-                    ),
-                  ],
-                )),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 30, top: 30),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 30),
-                              child: Image.asset(
-                                'assets/images/work/shop_easy/get_in.png',
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                                padding: const EdgeInsets.only(right: 30),
-                                child: Image.asset(
-                                  'assets/images/work/shop_easy/home.png',
-                                )),
-                          ),
-                        ]),
+          CustomProjectShowMobile(
+            globalKey: shoeEzKey,
+            projectName: 'Shop Ez',
+            projectDetail:
+                'A mobile app with beautiful UI that look like a professional ecommerce app.',
+            imageList: _shopEzImageList,
+          ),
+          CustomProjectShowMobile(
+            globalKey: cryptovestKey,
+            projectName: 'Cryptovest',
+            projectDetail:
+                'A mobile app with beautiful UI that look like a professional ecommerce app.',
+            imageList: _cryptovestImageList,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomProjectShowMobile extends StatelessWidget {
+  final String projectName;
+  final String projectDetail;
+  final List<String> imageList;
+  const CustomProjectShowMobile({
+    required this.imageList,
+    required this.projectDetail,
+    required this.projectName,
+    Key? key,
+    required this.globalKey,
+  }) : super(key: key);
+
+  final GlobalKey globalKey;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      key: globalKey,
+      color: AppColor.primaryBackgroundColor,
+      width: double.infinity,
+      height: 350,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Expanded(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width / 10),
+                child: const Text(
+                  'Shop Ez',
+                  style: TextStyle(
+                      fontSize: 28,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width / 10,
+                  right: MediaQuery.of(context).size.width / 20,
+                ),
+                child: const Text(
+                  'A mobile app with beautiful UI that look like a professional ecommerce app.',
+                  style: TextStyle(
+                      height: 1.5,
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Roboto',
+                      fontSize: 15),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width / 10),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: CustomAnimatedSendButton(
+                    buttonHeight: 35,
+                    buttonWidth: 100,
+                    isHasArrowIcon: true,
+                    buttonText: 'Check',
+                    alignmentGeometry: Alignment.centerLeft,
+                    onTab: () {
+                      context.push('/project_detail');
+                    },
+                    screenWidth: MediaQuery.of(context).size.width,
                   ),
                 ),
-              ],
+              ),
+            ],
+          )),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 20, top: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: imageList.map((item) {
+                  return Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 30),
+                      child: Image.asset(
+                        item,
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
             ),
           ),
         ],
@@ -194,3 +222,13 @@ class _MobilePicturePartState extends State<MobilePicturePart> {
     );
   }
 }
+
+var _shopEzImageList = [
+  'assets/images/work/shop_easy/get_in.png',
+  'assets/images/work/shop_easy/get_in.png',
+];
+
+var _cryptovestImageList = [
+  'assets/images/work/cryptovest/crypto_1.png',
+  'assets/images/work/cryptovest/crypto_2.png',
+];
