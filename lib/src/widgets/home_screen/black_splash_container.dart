@@ -75,7 +75,7 @@ class _BSplashContainerState extends State<BSplashContainer> {
                   child: AnimatedTextKit(
                     isRepeatingAnimation: false,
                     animatedTexts: [
-                      FadeAnimatedText('Heng Panha',
+                      FadeAnimatedText('Panha Heng',
                           duration: const Duration(milliseconds: 4000),
                           fadeInEnd: 0.5,
                           fadeOutBegin: 0.8,

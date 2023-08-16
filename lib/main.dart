@@ -1,10 +1,20 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_project_v2/src/config/routes/routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_strategy/url_strategy.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyDgWhDabTNWqtO2CJd_pxj-_rPXGj8aB18",
+      appId: "1:1084532849939:web:cc36052e51eeae0ed46ee6",
+      messagingSenderId: "1084532849939",
+      projectId: "williamnha-20d10",
+    ),
+  );
   setPathUrlStrategy();
 
   runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
