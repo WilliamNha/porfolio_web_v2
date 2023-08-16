@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio_project_v2/src/modules/about/screens/about_screen.dart';
 import 'package:portfolio_project_v2/src/modules/contact/screens/contact_screen.dart';
+import 'package:portfolio_project_v2/src/modules/home/models/project_detail_model.dart';
 import 'package:portfolio_project_v2/src/modules/home/screens/home_screen.dart';
 import 'package:portfolio_project_v2/src/modules/home/screens/project_detail_screen.dart';
 import 'package:portfolio_project_v2/src/modules/splash/screens/splash_screen.dart';
@@ -47,7 +48,9 @@ final GoRouter router = GoRouter(
           buildPageWithDefaultTransition(
         context: context,
         state: state,
-        child: const ProjectDetailScreen(),
+        child: ProjectDetailScreen(
+          projectDetailModel: state.extra as ProjectDetailModel,
+        ),
       ),
     ),
   ],

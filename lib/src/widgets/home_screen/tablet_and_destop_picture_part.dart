@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio_project_v2/src/constants/app_setting_color.dart';
+import 'package:portfolio_project_v2/src/modules/home/models/project_detail_model.dart';
 import 'package:portfolio_project_v2/src/widgets/contact/custom_animated_send_button.dart';
 import 'package:portfolio_project_v2/src/widgets/home_screen/animated_my_image.dart';
 import 'package:portfolio_project_v2/src/widgets/home_screen/check_my_work_button.dart';
@@ -177,6 +178,7 @@ class _TabletAndDesktopPicturePartState
             const CraftedWIthLovePart(),
             // ============== project part
             CustomProjectShowDesktop(
+              projectDetailModel: shopEzProjectDetail,
               globalKey: shoeEzKey,
               projectName: 'Shop Ez',
               projectDescription:
@@ -184,10 +186,11 @@ class _TabletAndDesktopPicturePartState
               imageList: shopEzImageList,
             ),
             CustomProjectShowDesktop(
+              projectDetailModel: cryptovestProjectDetail,
               globalKey: cryptovestKey,
               projectName: 'Cryptovest',
               projectDescription:
-                  'A mobile app with beautiful UI that look like a professional ecommerce app.',
+                  'Crypto Investment App that come with simple and elegent user interface.',
               imageList: cryptovestImageList,
             ),
           ],
@@ -196,11 +199,13 @@ class _TabletAndDesktopPicturePartState
 }
 
 class CustomProjectShowDesktop extends StatelessWidget {
+  final ProjectDetailModel projectDetailModel;
   final String projectName;
   final String projectDescription;
   final List<String> imageList;
 
   const CustomProjectShowDesktop({
+    required this.projectDetailModel,
     required this.imageList,
     required this.projectName,
     required this.projectDescription,
@@ -277,7 +282,8 @@ class CustomProjectShowDesktop extends StatelessWidget {
                     buttonText: 'Check',
                     alignmentGeometry: Alignment.centerLeft,
                     onTab: () {
-                      context.push('/project_detail');
+                      context.push('/project_detail',
+                          extra: projectDetailModel);
                     },
                     screenWidth: MediaQuery.of(context).size.width,
                   ),

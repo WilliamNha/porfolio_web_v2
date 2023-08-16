@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_project_v2/main.dart';
 import 'package:portfolio_project_v2/src/constants/app_setting_color.dart';
 import 'package:portfolio_project_v2/src/modules/footer/screens/footer_section.dart';
+import 'package:portfolio_project_v2/src/modules/home/models/project_detail_model.dart';
 import 'package:portfolio_project_v2/src/widgets/home_screen/animated_transition_container.dart';
 import 'package:portfolio_project_v2/src/widgets/home_screen/custom_app_bar.dart';
 import 'package:portfolio_project_v2/src/widgets/project_detail/custom_download_apk_button.dart';
@@ -11,7 +12,11 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../widgets/home_screen/custom_animated_drawer.dart';
 
 class ProjectDetailScreen extends StatefulWidget {
-  const ProjectDetailScreen({super.key});
+  final ProjectDetailModel? projectDetailModel;
+  const ProjectDetailScreen({
+    this.projectDetailModel,
+    super.key,
+  });
 
   @override
   State<ProjectDetailScreen> createState() => _ProjectDetailScreenState();
@@ -95,37 +100,24 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 30),
-                              child: Image.asset(
-                                'assets/images/work/shop_easy/get_in.png',
+                          for (var i = 0;
+                              screenWidth < 800
+                                  ? i <
+                                      widget.projectDetailModel!.imageList!
+                                              .length -
+                                          1
+                                  : i <
+                                      widget.projectDetailModel!.imageList!
+                                          .length;
+                              i++)
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 30),
+                                child: Image.asset(
+                                  widget.projectDetailModel!.imageList![i],
+                                ),
                               ),
                             ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                                padding: const EdgeInsets.only(right: 30),
-                                child: Image.asset(
-                                  'assets/images/work/shop_easy/home.png',
-                                )),
-                          ),
-                          Expanded(
-                            child: Padding(
-                                padding: const EdgeInsets.only(right: 30),
-                                child: Image.asset(
-                                  'assets/images/work/shop_easy/shoes.png',
-                                )),
-                          ),
-                          screenWidth < 800
-                              ? const SizedBox()
-                              : Expanded(
-                                  child: Padding(
-                                      padding: const EdgeInsets.only(right: 30),
-                                      child: Image.asset(
-                                        'assets/images/work/shop_easy/wallet.png',
-                                      )),
-                                ),
                         ]),
                   ),
                 ),
@@ -153,7 +145,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
                 SizedBox(
                   width: 500,
                   child: Text(
-                    'Shop Ez is an ecommerce app built using Flutter. It has beautiful and attractive UI desgin. This is personal project only.',
+                    widget.projectDetailModel!.projectDetail!,
                     style: TextStyle(
                         height: 2,
                         color: Colors.black,
@@ -169,7 +161,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
                     CustomPlatformText(
                       screenWidth: screenWidth,
                       title: 'Platform',
-                      detail: 'iOS/Android',
+                      detail: widget.projectDetailModel!.supportedPlatform!,
                     ),
                     SizedBox(
                       width: screenWidth / 15,
@@ -177,7 +169,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
                     CustomPlatformText(
                       screenWidth: screenWidth,
                       title: 'Category',
-                      detail: 'Ecommerce',
+                      detail: widget.projectDetailModel!.category!,
                     ),
                     SizedBox(
                       width: screenWidth / 15,
@@ -185,7 +177,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
                     CustomPlatformText(
                       screenWidth: screenWidth,
                       title: 'Designer',
-                      detail: 'Panha Heng',
+                      detail: widget.projectDetailModel!.designer!,
                     ),
                   ],
                 ),
@@ -201,8 +193,8 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
             ),
             child: CustomPlatformText(
                 screenWidth: screenWidth,
-                detail: 'Dart & Flutter',
-                title: 'Tool Used'),
+                detail: widget.projectDetailModel!.technologyUsed!,
+                title: 'Technology Used'),
           ),
           const SizedBox(
             height: 50,
@@ -210,8 +202,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen>
           CustomDownloadApkButton(
             screenWidth: screenWidth,
             onTab: () async {
-              final url = Uri.parse(
-                  'https://drive.google.com/file/d/1fFkwgrkEMFyYnMmUkAM9Z5UuIpeGeBq-/view?usp=share_link');
+              final url = Uri.parse(widget.projectDetailModel!.downloadLink!);
               if (await canLaunchUrl(url)) {
                 await launchUrl(url);
               }

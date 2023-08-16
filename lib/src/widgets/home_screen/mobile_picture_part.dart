@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio_project_v2/src/constants/app_setting_color.dart';
+import 'package:portfolio_project_v2/src/modules/home/models/project_detail_model.dart';
 import 'package:portfolio_project_v2/src/widgets/contact/custom_animated_send_button.dart';
 import 'package:portfolio_project_v2/src/widgets/home_screen/animated_my_image.dart';
 import 'package:portfolio_project_v2/src/widgets/home_screen/check_my_work_button.dart';
@@ -99,6 +100,7 @@ class _MobilePicturePartState extends State<MobilePicturePart> {
             isOnMobile: true,
           ),
           CustomProjectShowMobile(
+            projectDetailModel: shopEzProjectDetail,
             globalKey: shoeEzKey,
             projectName: 'Shop Ez',
             projectDetail:
@@ -106,10 +108,11 @@ class _MobilePicturePartState extends State<MobilePicturePart> {
             imageList: _shopEzImageList,
           ),
           CustomProjectShowMobile(
+            projectDetailModel: cryptovestProjectDetail,
             globalKey: cryptovestKey,
             projectName: 'Cryptovest',
             projectDetail:
-                'A mobile app with beautiful UI that look like a professional ecommerce app.',
+                'Crypto Investment App that come with simple and elegent user interface.',
             imageList: _cryptovestImageList,
           ),
         ],
@@ -119,10 +122,12 @@ class _MobilePicturePartState extends State<MobilePicturePart> {
 }
 
 class CustomProjectShowMobile extends StatelessWidget {
+  final ProjectDetailModel projectDetailModel;
   final String projectName;
   final String projectDetail;
   final List<String> imageList;
   const CustomProjectShowMobile({
+    required this.projectDetailModel,
     required this.imageList,
     required this.projectDetail,
     required this.projectName,
@@ -150,9 +155,9 @@ class CustomProjectShowMobile extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width / 10),
-                child: const Text(
-                  'Shop Ez',
-                  style: TextStyle(
+                child: Text(
+                  projectName,
+                  style: const TextStyle(
                       fontSize: 28,
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
@@ -166,9 +171,9 @@ class CustomProjectShowMobile extends StatelessWidget {
                   left: MediaQuery.of(context).size.width / 10,
                   right: MediaQuery.of(context).size.width / 20,
                 ),
-                child: const Text(
-                  'A mobile app with beautiful UI that look like a professional ecommerce app.',
-                  style: TextStyle(
+                child: Text(
+                  projectDetail,
+                  style: const TextStyle(
                       height: 1.5,
                       color: Colors.black,
                       fontWeight: FontWeight.normal,
@@ -191,7 +196,8 @@ class CustomProjectShowMobile extends StatelessWidget {
                     buttonText: 'Check',
                     alignmentGeometry: Alignment.centerLeft,
                     onTab: () {
-                      context.push('/project_detail');
+                      context.push('/project_detail',
+                          extra: projectDetailModel);
                     },
                     screenWidth: MediaQuery.of(context).size.width,
                   ),
